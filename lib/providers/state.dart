@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wordle/providers/settings.dart';
@@ -10,6 +12,9 @@ class GameState {
   final String correctWord;
   final List<String> attempts;
   final int attempted;
+  final List<String> wrongWords;
+  final List<String> rightWords;
+  final List<String> misplacedWords;
 
   const GameState({
     required this.validWords,
@@ -17,17 +22,27 @@ class GameState {
     required this.settings,
     required this.attempts,
     required this.attempted,
+    required this.misplacedWords,
+    required this.rightWords,
+    required this.wrongWords,
   });
 
   GameState clone(
       {List<String>? validWords,
       String? correctWord,
       List<String>? attempts,
-      int? attempted}) {
+      int? attempted,
+      List<String>? wrongWords,
+  List<String>? rightWords,
+  List<String>? misplacedWords,
+      }) {
     return GameState(
         validWords: validWords ?? this.validWords,
         correctWord: correctWord ?? this.correctWord,
         settings: settings,
+        wrongWords: wrongWords ?? this.wrongWords,
+        rightWords: rightWords ?? this.rightWords,
+        misplacedWords: misplacedWords ?? this.misplacedWords,
         attempted: attempted ?? this.attempted,
         attempts: attempts ?? this.attempts);
   }
@@ -42,7 +57,10 @@ class GameStateNotifier extends StateNotifier<GameState> {
             correctWord: "begin",
             settings: settings,
             attempts: [],
-            attempted: 0));
+            attempted: 0,
+            wrongWords: [],
+            misplacedWords: [],
+            rightWords: [],));
 
   Future<void> updateWords() async {
     final words = await loadWords(state.settings.wordSize);
@@ -54,6 +72,30 @@ class GameStateNotifier extends StateNotifier<GameState> {
     state = state.clone(
         correctWord:
             state.validWords[rng.nextInt(state.validWords.length - 1)]);
+  }
+
+  void addwrong(String add){
+    state.wrongWords.add(add);
+    var bruh = state.wrongWords.toSet().toList();
+    state.wrongWords.clear();
+    state.wrongWords.addAll(bruh);
+  }
+
+  void addright(String add){
+    state.rightWords.add(add);
+    state.misplacedWords.remove(add);
+    var bruh = state.rightWords.toSet().toList();
+    state.rightWords.clear();
+    state.rightWords.addAll(bruh);
+  }
+
+  void addmisplaced(String add){
+    if(!state.rightWords.contains(add)){
+    state.misplacedWords.add(add);
+    var bruh = state.misplacedWords.toSet().toList();
+    state.misplacedWords.clear();
+    state.misplacedWords.addAll(bruh);
+    }
   }
 
   void updateCurrentAttempt(String key) {

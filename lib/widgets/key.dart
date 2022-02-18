@@ -21,6 +21,8 @@ class MyKey extends ConsumerWidget{
       keyCap = Text(letter.toUpperCase(), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),);
     }
 
+    final gamesetting = ref.watch(gameStateProvider);
+
     return InkWell(
       splashFactory: NoSplash.splashFactory,
       splashColor: Colors.transparent,
@@ -34,10 +36,24 @@ class MyKey extends ConsumerWidget{
         margin: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: const Color(0xFf818384)),
+          color: getColor(gamesetting, letter.toLowerCase())),
         child: keyCap,
       ),
     );
+  }
+
+  getColor(GameState gamesetting, String letter) {
+    if(gamesetting.wrongWords.contains(letter)){
+      return const Color(0xff787c7e);
+    }
+    if(gamesetting.misplacedWords.contains(letter)){
+      return const Color(0xffc9b458);
+    }
+    if(gamesetting.rightWords.contains(letter)){
+      return const Color(0xff6aaa64);
+    }
+    return const Color(0xffd3d6da);
+
   }
 
 }
