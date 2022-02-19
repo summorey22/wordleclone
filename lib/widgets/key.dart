@@ -8,7 +8,7 @@ class MyKey extends ConsumerWidget{
 
    @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final StatelessWidget keyCap;
+    StatelessWidget keyCap;
     double width = 60;
     if (letter == "_"){
       keyCap = const Text("ENTER", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white));
@@ -21,7 +21,27 @@ class MyKey extends ConsumerWidget{
       keyCap = Text(letter.toUpperCase(), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),);
     }
 
+    mobiledim(){
+      if (letter == "_"){
+      width = 50;
+      keyCap = const Text("ENTER", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white));
+    }
+    else if (letter == ">"){
+      width = 50;
+      keyCap = const Icon(Icons.backspace_outlined, size: 17, color: Colors.white,);
+    }
+    else{
+      width = 28;
+      keyCap = Text(letter.toUpperCase(), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),);
+    }
+
+    }
+
     final gamesetting = ref.watch(gameStateProvider);
+
+    if(MediaQuery.of(context).size.width<600){
+      mobiledim();
+    }
 
     return InkWell(
       splashFactory: NoSplash.splashFactory,
