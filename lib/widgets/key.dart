@@ -64,7 +64,7 @@ class MyKey extends ConsumerWidget{
 
   getColor(GameState gamesetting, String letter) {
     if(gamesetting.wrongWords.contains(letter)){
-      return const Color(0xff787c7e);
+      return const Color(0xff3a3a3c);
     }
     if(gamesetting.misplacedWords.contains(letter)){
       return const Color(0xffc9b458);
@@ -72,7 +72,7 @@ class MyKey extends ConsumerWidget{
     if(gamesetting.rightWords.contains(letter)){
       return const Color(0xff6aaa64);
     }
-    return const Color(0xffd3d6da);
+    return const Color(0xff818483);
 
   }
 

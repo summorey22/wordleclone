@@ -6,7 +6,8 @@ class MyRow extends StatelessWidget {
   final String word;
   final String correctWord;
   final bool attempted;
-  const MyRow({Key? key, required this.wordSize, required this.word, required this.attempted, required this.correctWord})
+  final bool isDark;
+  const MyRow({Key? key, required this.wordSize, required this.word, required this.attempted, required this.correctWord, required this.isDark})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class MyRow extends StatelessWidget {
       if (word.length > j){
         letter = word[j];
       }
-      boxes.add(MyCell(word: word,pos: j,letter: letter, correctWord: correctWord, attempted: attempted));
+      boxes.add(MyCell(word: word,pos: j,letter: letter, correctWord: correctWord, attempted: attempted, isDark: isDark,));
     }
     return Row(
       mainAxisSize: MainAxisSize.min,

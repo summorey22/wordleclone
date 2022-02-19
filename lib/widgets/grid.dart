@@ -7,7 +7,8 @@ import 'package:wordle/widgets/row.dart';
 
 
 class MyGrid extends ConsumerWidget {
-  const MyGrid({Key? key}) : super(key: key);
+  final bool isDark;
+  const MyGrid({Key? key, required this.isDark}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +27,7 @@ class MyGrid extends ConsumerWidget {
       if (gameState.attempted > i){
         attempted = true;
       }
-      rows.add(MyRow(wordSize: wordSize, word: word, attempted: attempted,correctWord: gameState.correctWord,));
+      rows.add(MyRow(wordSize: wordSize, word: word, attempted: attempted,correctWord: gameState.correctWord,isDark: isDark,));
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,

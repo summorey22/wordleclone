@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wordle/widgets/key.dart';
 
 class MyKeyboard extends StatefulWidget{
-  const MyKeyboard({Key? key}) : super(key: key);
+  final bool isDark;
+  const MyKeyboard({Key? key, required this.isDark}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MyKeyboard();

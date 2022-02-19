@@ -3,12 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wordle/providers/state.dart';
 
 class MyCell extends ConsumerWidget{
+  final bool isDark;
   final int pos;
   final String letter;
   final String correctWord;
   final bool attempted;
   final String word;
-  const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word}) : super(key: key);
+  const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word, required this.isDark}) : super(key: key);
 
   Color? getBgColor([GameStateNotifier? gameprovider]){
     if (!attempted) return null;
@@ -49,6 +50,15 @@ class MyCell extends ConsumerWidget{
   }
 
   colorSet() {
+    if(isDark){
+      if(letter!=""){
+        if(getBgColor()!=null){
+          return const Color(0xff565758);
+        }
+        return const Color(0xff3a3a3c);
+      }
+      return const Color(0xff565758);
+    }
     if(letter!=""){
       if(getBgColor()!=null){
       return Colors.grey;
@@ -61,6 +71,10 @@ class MyCell extends ConsumerWidget{
   }
 
   getTextColor() {
+    if(isDark){
+    return Colors.white;
+
+    }
     if(!attempted){
       return Colors.black;
     }
