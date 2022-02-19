@@ -11,15 +11,23 @@ class MyCell extends ConsumerWidget{
   final String word;
   const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word, required this.isDark}) : super(key: key);
 
-  Color? getBgColor([GameStateNotifier? gameprovider]){
+  Color? getBgColor([GameStateNotifier? gameprovider, GameState? gameset]){
     if (!attempted) return null;
     if(correctWord == word){
+      gameset?.rightWords.clear();
+      gameset?.misplacedWords.clear();
+      for (int i=0;i<word.length;i++){
+        gameset?.rightWords.add(word[i]);
+      }
       return const Color(0xff6aaa64);
 
     }
     if (!correctWord.contains(letter)) {
       if(gameprovider!=null){
         gameprovider.addwrong(letter);
+      }
+      if(isDark){
+        return const Color(0xff3a3a3c);
       }
       return Colors.grey;
     }
@@ -38,13 +46,14 @@ class MyCell extends ConsumerWidget{
     
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final gameset = ref.watch(gameStateProvider);
     final gameprovider = ref.read(gameStateProvider.notifier);
     return Container(
       width: 60,
       height: 60,
       alignment: Alignment.center,
       margin: const EdgeInsets.all(3),
-      decoration: BoxDecoration(border: Border.all(color: colorSet(), width: 1), color: getBgColor(gameprovider)),
+      decoration: BoxDecoration(border: Border.all(color: colorSet(), width: 1), color: getBgColor(gameprovider, gameset)),
       child: Text(letter.toUpperCase(), style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold, color:  getTextColor()),),
     );
   }
