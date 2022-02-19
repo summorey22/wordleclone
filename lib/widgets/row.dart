@@ -16,7 +16,7 @@ class MyRow extends StatelessWidget {
       if (word.length > j){
         letter = word[j];
       }
-      boxes.add(MyCell(pos: j,letter: letter, correctWord: correctWord, attempted: attempted));
+      boxes.add(MyCell(word: word,pos: j,letter: letter, correctWord: correctWord, attempted: attempted));
     }
     return Row(
       mainAxisSize: MainAxisSize.min,

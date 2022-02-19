@@ -99,6 +99,7 @@ class GameStateNotifier extends StateNotifier<GameState> {
   }
 
   void updateCurrentAttempt(String key) {
+    print(state.correctWord);
     final attempts = state.attempts;
     if (attempts.length <= state.attempted) {
       attempts.add("");

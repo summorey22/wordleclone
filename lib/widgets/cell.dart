@@ -7,10 +7,15 @@ class MyCell extends ConsumerWidget{
   final String letter;
   final String correctWord;
   final bool attempted;
-  const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos}) : super(key: key);
+  final String word;
+  const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word}) : super(key: key);
 
   Color? getBgColor([GameStateNotifier? gameprovider]){
     if (!attempted) return null;
+    if(correctWord == word){
+      return const Color(0xff6aaa64);
+
+    }
     if (!correctWord.contains(letter)) {
       if(gameprovider!=null){
         gameprovider.addwrong(letter);
