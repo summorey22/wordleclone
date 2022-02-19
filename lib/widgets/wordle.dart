@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wordle/providers/state.dart';
 import 'package:wordle/widgets/grid.dart';
 import 'package:wordle/widgets/keyboard.dart';
 import '../providers/settings.dart';
@@ -31,6 +33,16 @@ class _MyWordle extends State<MyWordle> {
         iconTheme: IconThemeData(
           color: getText(isDark),
         ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 5),
+            child: IconButton(
+              splashRadius: 18,
+              onPressed: (){
+
+              }, icon: const Icon(Icons.refresh)),
+          )
+        ],
         title: Text(
           "WORDLE",
           style: TextStyle(
@@ -114,17 +126,28 @@ class _MyWordle extends State<MyWordle> {
                 children: [
                   const Text("Dark Mode"),
                   const Spacer(),
-                  Switch(
-                    value: isDark,
-                    onChanged: (bool s) {
-                      setState(() {
-                        isDark = s;
-                      });
-                    },
+                  Container(
+                    margin: const EdgeInsets.only(right: 25),
+                    child: Transform.scale(
+                      scale: 0.75,
+                      child: CupertinoSwitch(
+                        trackColor: const Color(0xffc9b458),
+                        activeColor: const Color(0xff6aaa64),
+                        value: isDark,
+                        onChanged: (bool s) {
+                          setState(() {
+                            isDark = s;
+                          });
+                        },
+                      ),
+                    ),
                   )
                 ],
               ),
-            )
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 5, left: 20, right: 25),
+              child: const Divider()),
           ],
         ),
       ),
@@ -192,8 +215,18 @@ class TextToggle extends ConsumerWidget {
 
     return SizedBox(
       width: 90,
-      child: OutlinedButton(onPressed: _updateAttempts, child: Text(text)),
+      child: OutlinedButton(onPressed: _updateAttempts, child: Text(text, style: TextStyle(color: getColor(text)),)),
     );
+  }
+
+  getColor(String text) {
+    if(text == "LOW"){
+      return Colors.lightGreen;
+    }
+    if(text == "MEDIUM") {
+      return Colors.amber;
+    }
+    return Colors.red;
   }
 }
 
