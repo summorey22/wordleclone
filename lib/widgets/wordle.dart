@@ -12,7 +12,7 @@ class MyWordle extends StatefulWidget {
 }
 
 class _MyWordle extends State<MyWordle> {
-  bool isDark = false;
+  
 
   getHeight(BuildContext context) {
     if (MediaQuery.of(context).size.width < 600) {
@@ -23,6 +23,8 @@ class _MyWordle extends State<MyWordle> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    
     return Scaffold(
       backgroundColor: getColor(isDark),
       appBar: AppBar(
