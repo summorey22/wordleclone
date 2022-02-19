@@ -30,6 +30,7 @@ class MyGrid extends ConsumerWidget {
       rows.add(MyRow(wordSize: wordSize, word: word, attempted: attempted,correctWord: gameState.correctWord,isDark: isDark,));
     }
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: rows,
     );

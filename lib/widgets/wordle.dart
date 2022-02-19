@@ -134,10 +134,10 @@ class _MyWordle extends State<MyWordle> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                  margin: EdgeInsets.only(top: getHeight(context)),
-                  child: Container(
-                      alignment: Alignment.center, child: MyGrid(isDark: isDark,))),
+              Expanded(
+                child: Container(
+                    alignment: Alignment.center, child: MyGrid(isDark: isDark,)),
+              ),
               MyKeyboard(isDark: isDark),
             ]),
       ),
@@ -146,7 +146,7 @@ class _MyWordle extends State<MyWordle> {
 
   getColor(bool isDark) {
     if (isDark) {
-      return Color(0xff121213);
+      return const Color(0xff121213);
     }
     return Colors.white;
   }
@@ -158,19 +158,6 @@ class _MyWordle extends State<MyWordle> {
     return Colors.black;
   }
 
-  toggleSwitch(bool isSwitched) {
-    if (isSwitched == false) {
-      setState(() {
-        isSwitched = true;
-      });
-      print('Switch Button is ON');
-    } else {
-      setState(() {
-        isSwitched = false;
-      });
-      print('Switch Button is OFF');
-    }
-  }
 }
 
 class TextToggle extends ConsumerWidget {
