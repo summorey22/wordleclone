@@ -15,6 +15,7 @@ class GameState {
   final List<String> wrongWords;
   final List<String> rightWords;
   final List<String> misplacedWords;
+  final List<String> errors;
 
   const GameState({
     required this.validWords,
@@ -25,6 +26,7 @@ class GameState {
     required this.misplacedWords,
     required this.rightWords,
     required this.wrongWords,
+    required this.errors
   });
 
   GameState clone(
@@ -35,6 +37,7 @@ class GameState {
       List<String>? wrongWords,
   List<String>? rightWords,
   List<String>? misplacedWords,
+  List<String>? errors
       }) {
     return GameState(
         validWords: validWords ?? this.validWords,
@@ -44,7 +47,8 @@ class GameState {
         rightWords: rightWords ?? this.rightWords,
         misplacedWords: misplacedWords ?? this.misplacedWords,
         attempted: attempted ?? this.attempted,
-        attempts: attempts ?? this.attempts);
+        attempts: attempts ?? this.attempts,
+        errors: errors ?? this.errors);
   }
 }
 
@@ -60,7 +64,8 @@ class GameStateNotifier extends StateNotifier<GameState> {
             attempted: 0,
             wrongWords: [],
             misplacedWords: [],
-            rightWords: [],));
+            rightWords: [],
+            errors: []));
 
   Future<void> updateWords() async {
     final words = await loadWords(state.settings.wordSize);
@@ -108,6 +113,10 @@ class GameStateNotifier extends StateNotifier<GameState> {
 
     if (key == "_") {
       // handle enter press
+      if (currentAttempt == state.correctWord){
+        state.errors.clear();
+        state.errors.add("Y");
+      }
 
       if (currentAttempt.length < state.settings.wordSize) {
         print("attempted word incomplete");
@@ -115,6 +124,8 @@ class GameStateNotifier extends StateNotifier<GameState> {
       }
 
       if (!state.validWords.contains(currentAttempt.toLowerCase())) {
+        state.errors.clear();
+        state.errors.add("L");
         print("not in valid words list");
         return;
       }

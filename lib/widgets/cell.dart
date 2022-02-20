@@ -13,7 +13,7 @@ class MyCell extends ConsumerWidget{
   final int attempts;
   const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word, required this.isDark, required this.wordSize, required this.attempts}) : super(key: key);
 
-  Color? getBgColor([GameStateNotifier? gameprovider, GameState? gameset]){
+  Color? getBgColor([BuildContext? context,GameStateNotifier? gameprovider, GameState? gameset]){
     if (!attempted) return null;
     if(correctWord == word){
       gameset?.rightWords.clear();
@@ -55,7 +55,7 @@ class MyCell extends ConsumerWidget{
       height: getSize(wordSize, context, attempts),
       alignment: Alignment.center,
       margin: const EdgeInsets.all(3),
-      decoration: BoxDecoration(border: Border.all(color: colorSet(), width: 1), color: getBgColor(gameprovider, gameset)),
+      decoration: BoxDecoration(border: Border.all(color: colorSet(), width: 1), color: getBgColor(context,gameprovider, gameset)),
       child: Text(letter.toUpperCase(), style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold, color:  getTextColor()),),
     );
   }

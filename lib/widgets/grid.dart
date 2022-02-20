@@ -16,8 +16,10 @@ class MyGrid extends ConsumerWidget {
     final attempts = gamesettings.attempts;
     final gameState = ref.watch(gameStateProvider);
 
+
     final wordSize = gamesettings.wordSize;
     final List<MyRow> rows = List.empty(growable: true);
+    
     for (int i = 0; i < attempts; i++){
       var word = "";
       if(gameState.attempts.length > i){
