@@ -27,7 +27,7 @@ class MyGrid extends ConsumerWidget {
       if (gameState.attempted > i){
         attempted = true;
       }
-      rows.add(MyRow(wordSize: wordSize, word: word, attempted: attempted,correctWord: gameState.correctWord,isDark: isDark,));
+      rows.add(MyRow(wordSize: wordSize, word: word, attempted: attempted,correctWord: gameState.correctWord,isDark: isDark, attempts: attempts));
     }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

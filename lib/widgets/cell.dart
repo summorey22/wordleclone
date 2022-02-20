@@ -9,7 +9,9 @@ class MyCell extends ConsumerWidget{
   final String correctWord;
   final bool attempted;
   final String word;
-  const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word, required this.isDark}) : super(key: key);
+  final int wordSize;
+  final int attempts;
+  const MyCell({Key? key, required this.letter, required this.correctWord, required this.attempted, required this.pos, required this.word, required this.isDark, required this.wordSize, required this.attempts}) : super(key: key);
 
   Color? getBgColor([GameStateNotifier? gameprovider, GameState? gameset]){
     if (!attempted) return null;
@@ -49,8 +51,8 @@ class MyCell extends ConsumerWidget{
     final gameset = ref.watch(gameStateProvider);
     final gameprovider = ref.read(gameStateProvider.notifier);
     return Container(
-      width: 60,
-      height: 60,
+      width: getSize(wordSize, context, attempts),
+      height: getSize(wordSize, context, attempts),
       alignment: Alignment.center,
       margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(border: Border.all(color: colorSet(), width: 1), color: getBgColor(gameprovider, gameset)),
@@ -88,6 +90,16 @@ class MyCell extends ConsumerWidget{
       return Colors.black;
     }
     return Colors.white;
+  }
+
+  getSize(int wordSize, BuildContext context, int attempts) {
+    if((wordSize == 6 || attempts == 6) && MediaQuery.of(context).size.height<700){
+      return 45;
+    }
+    if(wordSize == 6 && MediaQuery.of(context).size.width<600){
+      return 45;
+    }
+    return 60;
   }
 
 }

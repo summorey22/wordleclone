@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wordle/providers/state.dart';
 import 'package:wordle/widgets/grid.dart';
 import 'package:wordle/widgets/keyboard.dart';
 import '../providers/settings.dart';
@@ -155,12 +154,10 @@ class _MyWordle extends State<MyWordle> {
         alignment: Alignment.center,
         child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(
-                child: Container(
+              Container(
                     alignment: Alignment.center, child: MyGrid(isDark: isDark,)),
-              ),
               MyKeyboard(isDark: isDark),
             ]),
       ),
