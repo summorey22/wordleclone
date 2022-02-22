@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wordle/providers/state.dart';
+import 'package:wordle/widgets/dialog.dart';
 import 'package:wordle/widgets/grid.dart';
 import 'package:wordle/widgets/keyboard.dart';
 import '../providers/settings.dart';
@@ -13,6 +14,8 @@ class MyWordle extends ConsumerStatefulWidget {
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _MyWordle();
 }
+
+
 
 class _MyWordle extends ConsumerState<MyWordle> {
   bool isDark = WidgetsBinding.instance?.window.platformBrightness == Brightness.dark;
@@ -211,7 +214,10 @@ class _MyWordle extends ConsumerState<MyWordle> {
             },
             child: Focus(
               autofocus: true,
-              child: Column(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -219,6 +225,8 @@ class _MyWordle extends ConsumerState<MyWordle> {
                         alignment: Alignment.center, child: MyGrid(isDark: isDark,)),
                   MyKeyboard(isDark: isDark),
                 ]),
+                MyDialog(isDark: isDark),
+              ],)
             ),
           ),)
       ),
