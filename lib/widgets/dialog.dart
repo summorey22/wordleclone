@@ -37,6 +37,7 @@ class _MyDialog extends ConsumerState<MyDialog> {
                     ),
                     splashRadius: 1,
                     onPressed: () {
+                      ref.watch(gameStateProvider).errors.clear();
                        Navigator.push(
                                   context,
                                   PageRouteBuilder(
@@ -57,6 +58,7 @@ class _MyDialog extends ConsumerState<MyDialog> {
                     ),
                     splashRadius: 1,
                     onPressed: () {
+                      ref.watch(gameStateProvider).errors.clear();
                        ref.read(settingsProvider.notifier).updateAttempts(ref.read(settingsProvider).attempts);
                        Navigator.push(
                                   context,
@@ -111,75 +113,18 @@ class _MyDialog extends ConsumerState<MyDialog> {
       );
     }
     if(ref.watch(settingsProvider).attempts == ref.watch(gameStateProvider).attempted){
-      return Container(
-        color: Colors.black.withOpacity(0.5),
+      return Align(
+        alignment: Alignment.topCenter,
         child: Container(
-          margin: getMargin(),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: getColor(widget.isDark),
-          ),
-          padding: const EdgeInsets.all(0.5),
-          child: Column(
-            children: [
-              Row(
-                //mainAxisSize: MainAxisSize.max,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.close,
-                      color: getTextColor(widget.isDark),
-                    ),
-                    splashRadius: 1,
-                    onPressed: () {},
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    icon: Icon(
-                      Icons.refresh,
-                      color: getTextColor(widget.isDark),
-                    ),
-                    splashRadius: 1,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        margin: const EdgeInsets.only(top: 25),
-                        child: const Text(
-                          "YOU LOST",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                              fontSize: 50),
-                        )),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15),
-                      child: Text(
-                        "THE CORRECT WORD WAS",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: getTextColor(widget.isDark)),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 5, bottom: 60),
-                      child: Text(
-                        ref.watch(gameStateProvider).correctWord.toUpperCase(),
-                        style: const TextStyle(
-                            color: Colors.lightGreen, fontSize: 45),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ));
+          margin: const EdgeInsets.only(top: 40),
+          height: 50,
+          width: 95,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.white),
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(5),
+          child: Text(ref.watch(gameStateProvider).correctWord.toUpperCase(), style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+        )),
+      );
 
     }
     return Container();
