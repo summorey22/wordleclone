@@ -116,7 +116,7 @@ class _MyDialog extends ConsumerState<MyDialog> {
       return Align(
         alignment: Alignment.topCenter,
         child: Container(
-          margin: const EdgeInsets.only(top: 40),
+          margin: const EdgeInsets.only(top: 30),
           height: 50,
           width: 95,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.white),
