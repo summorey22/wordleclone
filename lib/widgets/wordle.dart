@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wordle/providers/state.dart';
 import 'package:wordle/widgets/dialog.dart';
 import 'package:wordle/widgets/grid.dart';
+import 'package:wordle/widgets/help.dart';
 import 'package:wordle/widgets/keyboard.dart';
 import '../providers/settings.dart';
 
@@ -36,8 +37,21 @@ class _MyWordle extends ConsumerState<MyWordle> {
         iconTheme: IconThemeData(
           color: getText(isDark),
         ),
-        actions: const [
-          RestartButton(),
+        actions: [
+          const RestartButton(),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Help(isDark: isDark)));
+            },
+            icon: Icon(
+              Icons.help,
+              color: getText(isDark),
+            ),
+            splashRadius: 18,
+          )
         ],
         title: Text(
           "WORDLE",
@@ -51,30 +65,21 @@ class _MyWordle extends ConsumerState<MyWordle> {
       ),
       drawer: Drawer(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               margin: const EdgeInsets.only(top: 50, left: 20),
               child: IntrinsicHeight(
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
-                      Icons.settings_applications_outlined,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                    const VerticalDivider(
-                      indent: 10,
-                      endIndent: 10,
-                      color: Colors.black,
-                    ),
+                    const Spacer(),
                     const Text(
                       "SETTINGS",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 16,
                           color: Colors.black),
                     ),
                     const Spacer(),
@@ -93,45 +98,18 @@ class _MyWordle extends ConsumerState<MyWordle> {
               ),
             ),
             Container(
-                margin: const EdgeInsets.only(top: 40, left: 20, right: 25),
-                child: const Divider()),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 5),
-              child: Row(children: [
-                const Text("DIFFICULTY", style: TextStyle(fontWeight: FontWeight.bold,),),
-                const Spacer(),
-                Container(
-                    margin: const EdgeInsets.only(right: 25),
-                    child: const TextToggle()),
-              ]),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 10),
-              child: Row(children: [
-                const Text("WORD SIZE", style: TextStyle(fontWeight: FontWeight.bold,),),
-                const Spacer(),
-                Container(
-                    margin: const EdgeInsets.only(right: 25),
-                    child: const WordSizeToggle()),
-              ]),
-            ),
-            Container(
-                margin: const EdgeInsets.only(top: 5, left: 20, right: 25),
-                child: const Divider()),
-            Container(
-              margin: const EdgeInsets.only(top: 25, left: 20, right: 25),
-              child: const Divider(),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 5),
+              margin: const EdgeInsets.only(top: 40, left: 20),
               child: Row(
                 children: [
-                  const Text("Dark Mode"),
+                  const Text(
+                    "Dark Theme",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
                   const Spacer(),
                   Container(
                     margin: const EdgeInsets.only(right: 25),
                     child: Transform.scale(
-                      scale: 0.75,
+                      scale: 0.70,
                       child: CupertinoSwitch(
                         trackColor: const Color(0xffc9b458),
                         activeColor: const Color(0xff6aaa64),
@@ -148,8 +126,38 @@ class _MyWordle extends ConsumerState<MyWordle> {
               ),
             ),
             Container(
-                margin: const EdgeInsets.only(top: 5, left: 20, right: 25),
+                margin: const EdgeInsets.only(left: 20, right: 25),
                 child: const Divider()),
+            Container(
+              margin: const EdgeInsets.only(left: 20, top: 5),
+              child: Row(children: [
+                const Text(
+                  "Difficulty",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const Spacer(),
+                Container(
+                    margin: const EdgeInsets.only(right: 25),
+                    child: const TextToggle()),
+              ]),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 20, top: 10),
+              child: Row(children: [
+                const Text(
+                  "Word Size",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                const Spacer(),
+                Container(
+                    margin: const EdgeInsets.only(right: 25),
+                    child: const WordSizeToggle()),
+              ]),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 5, left: 20, right: 25),
+              child: const Divider(),
+            )
           ],
         ),
       ),
