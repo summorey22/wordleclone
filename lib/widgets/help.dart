@@ -10,7 +10,7 @@ class Help extends StatelessWidget {
       backgroundColor: getBgColor(),
       body: Container(
           padding: EdgeInsets.only(
-              left: getPadding(context), right: getPadding(context)),
+              top: 15, left: getPadding(context), right: getPadding(context)),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -23,14 +23,14 @@ class Help extends StatelessWidget {
                       Icons.alarm,
                       color: Colors.transparent,
                     ),
-                    splashRadius: 1,
+                    splashRadius: 1.0,
                   ),
                   const Spacer(),
                   Text(
                     "HOW TO PLAY",
                     style: TextStyle(
                         color: getColor(),
-                        fontSize: 15,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.bold),
                   ),
                   const Spacer(),
@@ -42,13 +42,13 @@ class Help extends StatelessWidget {
                       Icons.close,
                       color: getColor(),
                     ),
-                    splashRadius: 18,
+                    splashRadius: 18.0,
                   ),
                 ],
               ),
               Container(
                 alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.only(top: 15, bottom: 10),
+                margin: const EdgeInsets.only(top: 15.0, bottom: 10.0),
                 child: RichText(
                     text: TextSpan(
                         style: TextStyle(
@@ -73,7 +73,7 @@ class Help extends StatelessWidget {
                 color: Colors.grey,
               ),
               Container(
-                  margin: const EdgeInsets.only(top: 10, bottom: 20),
+                  margin: const EdgeInsets.only(top: 10.0, bottom: 20.0),
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Examples",
@@ -99,67 +99,67 @@ class Help extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                        border: Border.all(color: getBorder(), width: 2.0)),
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "E",
                       style: TextStyle(
                           color: getColor(),
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                        border: Border.all(color: getBorder(), width: 2.0)),
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "A",
                       style: TextStyle(
                           color: getColor(),
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                        border: Border.all(color: getBorder(), width: 2.0)),
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "R",
                       style: TextStyle(
                           color: getColor(),
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                        border: Border.all(color: getBorder(), width: 2.0)),
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "Y",
                       style: TextStyle(
                           color: getColor(),
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   const Spacer(),
@@ -183,56 +183,56 @@ class Help extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.transparent,
                         border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "P",
                       style: TextStyle(
                           color: getColor(),
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: const BoxDecoration(
                       color: Color(0xffc9b458),
                     ),
-                    height: 45,
-                    width: 45,
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: const Text(
                       "I",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                        border: Border.all(color: getBorder(), width: 2.0)),
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "L",
                       style: TextStyle(
                           color: getColor(),
                           fontWeight: FontWeight.bold,
-                          fontSize: 30),
+                          fontSize: 30.0),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 4),
+                    margin: const EdgeInsets.only(left: 4.0),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(color: getBorder(), width: 2)),
-                    height: 45,
-                    width: 45,
+                        border: Border.all(color: getBorder(), width: 2.0)),
+                    height: 45.0,
+                    width: 45.0,
                     alignment: Alignment.center,
                     child: Text(
                       "I",
@@ -330,10 +330,10 @@ class Help extends StatelessWidget {
                     height: 45,
                     width: 45,
                     alignment: Alignment.center,
-                    child: Text(
+                    child: const Text(
                       "U",
                       style: TextStyle(
-                          color: getColor(),
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 30),
                     ),
@@ -360,11 +360,11 @@ class Help extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 margin: const EdgeInsets.only(top: 15, bottom: 20),
-                child: Text(
+                child: const Text(
                   "The letter U is not in the word in any spot.",
                   style: TextStyle(
                     fontSize: 14.0,
-                    color: getColor(),
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -390,9 +390,9 @@ class Help extends StatelessWidget {
 
   getPadding(BuildContext context) {
     if (MediaQuery.of(context).size.width > 1400) {
-      return 550;
+      return 550.toDouble();
     }
-    return 20;
+    return 20.toDouble();
   }
 
   getColor() {

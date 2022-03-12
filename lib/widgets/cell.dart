@@ -94,12 +94,12 @@ class MyCell extends ConsumerWidget{
 
   getSize(int wordSize, BuildContext context, int attempts) {
     if((wordSize == 6 || attempts == 6) && MediaQuery.of(context).size.height<700){
-      return 45;
+      return 45.toDouble();
     }
     if(wordSize == 6 && MediaQuery.of(context).size.width<600){
-      return 45;
+      return 45.toDouble();
     }
-    return 60;
+    return 60.toDouble();
   }
 
 }
