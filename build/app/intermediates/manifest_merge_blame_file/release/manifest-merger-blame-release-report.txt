@@ -17,7 +17,7 @@
 13-->[androidx.core:core:1.6.0] C:\Users\sumit\.gradle\caches\transforms-2\files-2.1\122df2e57d294d1a53db26bbc3b813c1\core-1.6.0\AndroidManifest.xml:24:18-86
 14        android:icon="@mipmap/ic_launcher"
 14-->E:\Redundant\wordle\android\app\src\main\AndroidManifest.xml:6:9-43
-15        android:label="wordle" >
+15        android:label="Wordle" >
 15-->E:\Redundant\wordle\android\app\src\main\AndroidManifest.xml:4:9-31
 16        <activity
 16-->E:\Redundant\wordle\android\app\src\main\AndroidManifest.xml:7:9-27:20

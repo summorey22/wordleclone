@@ -10,7 +10,7 @@ class Help extends StatelessWidget {
       backgroundColor: getBgColor(),
       body: Container(
           padding: EdgeInsets.only(
-              top: 15, left: getPadding(context), right: getPadding(context)),
+              top: 35, left: getPadding(context), right: getPadding(context)),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
